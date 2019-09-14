@@ -2,19 +2,19 @@
 title: "P8105 Homework 1"
 author: "Bingkun Luo"
 date: "9/14/2019"
-output:html_document:
-    toc: true
-    toc_float: true
+output: github_document
 ---
 # Question 1
 ## a
 ```{r}
 library(tidyverse)
+set.seed(1)
 df_1 = tibble(samp= rnorm(8),
               vec_logical = samp > 0,
               vec_chara = c("a","a","a","a","a","a","a","a"),
-              vec_factor = factor(c("low","high","medium","high","low","medium", "high","low"),levels = c("low",              "medium","high"))
+              vec_factor = sample(c("low","medium","high"),8,replace = TRUE)
               )
+           
 ```
 * The mean of the sample is `r mean(pull(df_1, samp))`.
 * The mean of the logical vector is `r mean(pull(df_1, vec_logical))`.
@@ -22,7 +22,7 @@ df_1 = tibble(samp= rnorm(8),
 * The mean of the factor vector is `r mean(pull(df_1, vec_factor))`,, showing that the mean function does not work for the factor vector either.
 
 ## b
-```{r}
+```{r eval=FALSE}
 convert_1 = as.numeric(pull(df_1, vec_logical))
 convert_1*(pull(df_1, samp))
 
@@ -44,7 +44,7 @@ df_2 = tibble(x = rnorm(500),y = rnorm(500),vec_logic = (x+y)>1,
 
 ## b
 ```{r}
-set.seed(10086)
+set.seed(1)
 
 ggplot(df_2, aes(x = x, y = y, color = vec_logic)) + geom_point()
 ggsave("df_2.png", width = 4, height = 4)
