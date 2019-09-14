@@ -1,0 +1,19 @@
+---
+title: "P8105 Homework 1"
+author: "Bingkun Luo"
+date: "9/14/2019"
+output:html_document:
+    toc: true
+    toc_float: true
+---
+
+
+
+
+## Question 1
+
+
+
+## Including Plots
+
+
