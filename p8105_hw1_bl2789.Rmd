@@ -6,14 +6,53 @@ output:html_document:
     toc: true
     toc_float: true
 ---
+# Question 1
+## a
+```{r}
+library(tidyverse)
+df_1 = tibble(samp= rnorm(8),
+              vec_logical = samp > 0,
+              vec_chara = c("a","a","a","a","a","a","a","a"),
+              vec_factor = factor(c("low","high","medium","high","low","medium", "high","low"),levels = c("low",              "medium","high"))
+              )
+```
+* The mean of the sample is `r mean(pull(df_1, samp))`.
+* The mean of the logical vector is `r mean(pull(df_1, vec_logical))`.
+* The mean of the character vector is `r mean(pull(df_1, vec_chara))`, showing that the mean function does not work for the character vector.
+* The mean of the factor vector is `r mean(pull(df_1, vec_factor))`,, showing that the mean function does not work for the factor vector either.
+
+## b
+```{r}
+convert_1 = as.numeric(pull(df_1, vec_logical))
+convert_1*(pull(df_1, samp))
+
+convert_2 = as.factor(pull(df_1, vec_logical))
+convert_2*(pull(df_1, samp))
+
+convert_3 = as.numeric(convert_2)
+convert_3*(pull(df_1, samp))
+```
+
+# Question 2
+## a
+```{r}
+df_2 = tibble(x = rnorm(500),y = rnorm(500),vec_logic = (x+y)>1,
+              vec_numer = as.numeric(vec_logic),
+              vec_factor = as.factor(vec_logic)
+             )
+```
+
+## b
+```{r}
+set.seed(10086)
+
+ggplot(df_2, aes(x = x, y = y, color = vec_logic)) + geom_point()
+ggsave("df_2.png", width = 4, height = 4)
+```
 
 
-
-
-## Question 1
-
-
-
-## Including Plots
-
+```{r}
+ggplot(df_2, aes(x = x, y = y,color = vec_numer)) + geom_point()
+ggplot(df_2, aes(x = x, y = y,color = vec_factor)) + geom_point()
+```
 
