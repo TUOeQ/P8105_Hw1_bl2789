@@ -36,11 +36,18 @@ convert_3*(pull(df_1, samp))
 # Question 2
 ## a
 ```{r}
-df_2 = tibble(x = rnorm(500),y = rnorm(500),vec_logic = (x+y)>1,
+x = rnorm(500)
+y = rnorm(500)
+vec_logic = (x+y)>1
+
+df_2 = tibble(x,y,vec_logic,
               vec_numer = as.numeric(vec_logic),
               vec_factor = as.factor(vec_logic)
-             )
+)
 ```
+* the size of the dataset `r nrow(df_2) `*`r ncol(df_2)`.
+* the mean of x is `r mean(pull(df_2, x))`, median of x is `r median(pull(df_2, x))`, and standard deviation of x is`r var(pull(df_2, x))^0.5`.
+* the proportion of cases for which x + y > 1 is `r sum(pull(df_2,vec_numer))/length(pull(df_2,vec_logic))`.
 
 ## b
 ```{r}
