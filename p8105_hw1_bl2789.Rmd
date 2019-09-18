@@ -14,15 +14,24 @@ df_1 = tibble(samp= rnorm(8),
               vec_chara = c("a","a","a","a","a","a","a","a"),
               vec_factor = sample(c("low","medium","high"),8,replace = TRUE)
               )
-           
+
 ```
 * The mean of the sample is `r mean(pull(df_1, samp))`.
 * The mean of the logical vector is `r mean(pull(df_1, vec_logical))`.
 * The mean of the character vector is `r mean(pull(df_1, vec_chara))`, showing that the mean function does not work for the character vector.
 * The mean of the factor vector is `r mean(pull(df_1, vec_factor))`,, showing that the mean function does not work for the factor vector either.
 
+```{{r eval=FALSE}}
+log = as.numeric(pull(df_1, vec_logical))
+log
+chara = as.numeric(pull(df_1,  vec_chara))
+chara
+fac = as.numeric(pull(df_1, vec_factor))  
+fac
+```
+
 ## b
-```{r eval=FALSE}
+```{r}
 convert_1 = as.numeric(pull(df_1, vec_logical))
 convert_1*(pull(df_1, samp))
 
