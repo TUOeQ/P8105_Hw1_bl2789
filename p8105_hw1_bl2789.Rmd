@@ -16,12 +16,7 @@ df_1 = tibble(samp= rnorm(8),
               )
 
 ```
-* The mean of the sample is `r mean(pull(df_1, samp))`.
-* The mean of the logical vector is `r mean(pull(df_1, vec_logical))`.
-* The mean of the character vector is `r mean(pull(df_1, vec_chara))`, showing that the mean function does not work for the character vector.
-* The mean of the factor vector is `r mean(pull(df_1, vec_factor))`,, showing that the mean function does not work for the factor vector either.
-
-```{{r eval=FALSE}}
+```{r eval=FALSE}
 log = as.numeric(pull(df_1, vec_logical))
 log
 chara = as.numeric(pull(df_1,  vec_chara))
@@ -29,6 +24,14 @@ chara
 fac = as.numeric(pull(df_1, vec_factor))  
 fac
 ```
+
+The R compel character and factor variables in to NA, while assign the logical varible as either 1 or 0.
+* The mean of the sample is `r mean(pull(df_1, samp))`.
+* The mean of the logical vector is `r mean(pull(df_1, vec_logical))`.
+* The mean of the character vector is `r mean(pull(df_1, vec_chara))`, showing that the mean function does not work for the character vector.
+* The mean of the factor vector is `r mean(pull(df_1, vec_factor))`,, showing that the mean function does not work for the factor vector either.
+
+
 
 ## b
 ```{r}
@@ -72,4 +75,4 @@ ggplot(df_2, aes(x = x, y = y,color = vec_numer)) + geom_point()
 ggplot(df_2, aes(x = x, y = y,color = vec_factor)) + geom_point()
 ```
 
-The three graphs showed that the factor and the logical used same varible to identify data points. Otherwise, the numeric data has showed different index for the data and more subdivisive structure for non integer data.
+The three graphs showed that the factor and the logical used same varible to identify data points. Otherwise, the numeric data has showed different index for the data and more subdivisive structure for non-integer data.
