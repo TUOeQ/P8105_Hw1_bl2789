@@ -26,10 +26,11 @@ fac
 ```
 
 The R compel character and factor variables in to NA, while assign the logical varible as either 1 or 0.
+
 * The mean of the sample is `r mean(pull(df_1, samp))`.
 * The mean of the logical vector is `r mean(pull(df_1, vec_logical))`.
 * The mean of the character vector is `r mean(pull(df_1, vec_chara))`, showing that the mean function does not work for the character vector.
-* The mean of the factor vector is `r mean(pull(df_1, vec_factor))`,, showing that the mean function does not work for the factor vector either.
+* The mean of the factor vector is `r mean(pull(df_1, vec_factor))`, showing that the mean function does not work for the factor vector either.
 
 
 
@@ -59,7 +60,7 @@ df_2 = tibble(x,y,vec_logic,
 ```
 * the size of the dataset `r nrow(df_2) `*`r ncol(df_2)`.
 * the mean of x is `r mean(pull(df_2, x))`, median of x is `r median(pull(df_2, x))`, and standard deviation of x is`r var(pull(df_2, x))^0.5`.
-* the proportion of cases for which x + y > 1 is `r sum(pull(df_2,vec_numer))/length(pull(df_2,vec_logic))`.
+* the proportion of cases for which x + y > 1 is  `r sum(pull(df_2,vec_numer))/length(pull(df_2,vec_logic))`.
 
 ## b
 ```{r}
